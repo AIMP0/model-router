@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+runtime/
+backups/
+.env
+.env.*
+credentials.json
+client-token
+*.log
+*.sqlite*
+*.pem
+*.key
