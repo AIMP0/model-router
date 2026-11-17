@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aimp-model-router"
+version = "0.1.0"
+description = "Authenticated local model routing, failover and stdio MCP bridge"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["mcp>=1.28,<2"]
+
+[tool.setuptools.packages.find]
+include = ["aimp_router*"]

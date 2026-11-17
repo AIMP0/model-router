@@ -1,0 +1,170 @@
+{
+  "default": "GPT",
+  "fallback_enabled": true,
+  "fallback": [
+    "GPT",
+    "Claude",
+    "DeepSeek Flash",
+    "DeepSeek Pro"
+  ],
+  "timeout_seconds": 60,
+  "cooldown_seconds": 30,
+  "roles": {
+    "personality": [
+      "DeepSeek Flash"
+    ],
+    "food": [
+      "Grok"
+    ],
+    "ledger": [
+      "Claude"
+    ],
+    "manager": [
+      "DeepSeek Pro"
+    ],
+    "product": [
+      "Claude"
+    ],
+    "design": [
+      "GPT",
+      "Claude"
+    ],
+    "development": [
+      "Claude"
+    ]
+  },
+  "tiers": {
+    "simple": [
+      "DeepSeek Flash"
+    ],
+    "standard": [
+      "Claude"
+    ],
+    "complex": [
+      "DeepSeek Pro"
+    ]
+  },
+  "targets": {
+    "GPT": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-6.1-sol",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": [
+        "tools",
+        "vision"
+      ]
+    },
+    "Claude": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "SET_REAL_CLAUDE_MODEL_ID",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": false,
+      "capabilities": [
+        "tools",
+        "vision"
+      ]
+    },
+    "Grok": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "SET_REAL_GROK_MODEL_ID",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": false,
+      "capabilities": [
+        "tools"
+      ]
+    },
+    "DeepSeek Flash": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "aimp-deepseek-flash",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": [
+        "tools"
+      ]
+    },
+    "DeepSeek Pro": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "aimp-deepseek-pro",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": [
+        "tools"
+      ]
+    },
+    "gpt-5.6-luna": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-5.6-luna",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "gpt-5.6-sol": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-5.6-sol",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "gpt-5.6-terra": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-5.6-terra",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "gpt-6-astra": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-6-astra",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "gpt-6-luna": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-6-luna",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "gpt-6-sol": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-6-sol",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "gpt-6.1-sol": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-6.1-sol",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "gpt-6.1-terra": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "gpt-6.1-terra",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": []
+    },
+    "deepseek-flash": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "aimp-deepseek-flash",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": [
+        "tools"
+      ]
+    },
+    "deepseek-v4-pro": {
+      "base_url": "http://127.0.0.1:8317/v1",
+      "model": "aimp-deepseek-pro",
+      "api_key_env": "CLIPROXY_API_KEY",
+      "enabled": true,
+      "capabilities": [
+        "tools"
+      ]
+    }
+  }
+}
