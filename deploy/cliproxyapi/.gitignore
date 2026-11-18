@@ -1,0 +1,16 @@
+runtime/
+backups/
+downloads/
+bin/
+auths/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+config.json
+credentials.json
+client-token
+*.log
+*.sqlite*
+*.pem
+*.key

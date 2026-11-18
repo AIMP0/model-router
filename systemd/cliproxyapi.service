@@ -1,0 +1,19 @@
+[Unit]
+Description=CLIProxyAPI upstream for Model Router
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/share/model-router/deploy/cliproxyapi
+ExecStart=%h/.local/share/model-router/deploy/cliproxyapi/bin/cli-proxy-api -config %h/.local/share/model-router/deploy/cliproxyapi/runtime/config.json
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/share/model-router/deploy/cliproxyapi/runtime
+
+[Install]
+WantedBy=default.target

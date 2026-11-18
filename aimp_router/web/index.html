@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Model Router · 余额与配置</title>
+  <link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+  <div id="notice" role="status" aria-live="polite" hidden></div>
+  <section id="login-view" class="login-view">
+    <form id="login-form" class="login-card">
+      <div class="brand-mark">M<span>↗</span></div>
+      <p class="eyebrow">MODEL ROUTER</p>
+      <h1>你的模型，<br>一处掌握。</h1>
+      <p class="muted">查看账号余额，管理查询接口和访问地址。</p>
+      <label for="login-token">管理令牌</label>
+      <input id="login-token" name="token" type="password" autocomplete="current-password" required placeholder="输入 dashboard-token 中的令牌">
+      <button class="primary" type="submit">进入控制台 <span>↗</span></button>
+      <p id="login-error" class="error" role="alert"></p>
+      <small>余额查询密钥保存在服务器本地，登录后不会回显。</small>
+    </form>
+    <div class="login-art" aria-hidden="true"><div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div><div class="art-label">ONE PLACE.<br>EVERY MODEL.</div><div class="art-note">Connect · Observe · Build</div></div>
+  </section>
+  <div id="app-view" class="app" hidden>
+    <aside class="sidebar">
+      <a class="wordmark" href="/">M<span>↗</span> <b>Model Router</b></a>
+      <p class="sidebar-caption">工作空间</p>
+      <nav aria-label="主导航">
+        <button class="nav active" data-view="overview">◫ <span>余额总览</span></button>
+        <button class="nav" data-view="providers">⊞ <span>提供商配置</span></button>
+        <button class="nav" data-view="network">⌁ <span>访问配置</span></button>
+      </nav>
+      <div class="sidebar-bottom"><span class="live-dot"></span> 私人管理控制台<button id="logout" class="text-button">退出登录 ↗</button></div>
+    </aside>
+    <main>
+      <header><span id="breadcrumb">工作空间 / 余额总览</span><span class="header-status"><i class="live-dot"></i> 已登录 <button id="mobile-logout" class="text-button mobile-logout">退出</button></span></header>
+      <section id="overview-view" class="view">
+        <div class="page-heading"><div><p class="eyebrow">ACCOUNT OVERVIEW</p><h1>模型余额总览<span class="accent">.</span></h1><p class="muted">按提供商账号查看，同一账号下的模型共享余额。</p></div><button id="refresh" class="primary">↻ 刷新余额</button></div>
+        <div class="stats"><div><span>提供商账号</span><strong id="account-count">—</strong></div><div><span>已查询成功</span><strong id="ready-count">—</strong></div><div><span>关联模型</span><strong id="model-count">—</strong></div><div><span>最近刷新</span><strong id="updated-at" class="time">尚未查询</strong></div></div>
+        <div class="section-heading"><h2>我的账号 <span id="cards-count"></span></h2><button class="text-button" data-view="providers">管理提供商 ↗</button></div>
+        <p id="balance-loading" class="muted" role="status">正在读取余额…</p>
+        <div id="balance-cards" class="cards"></div>
+        <div class="info-line"><span>ⓘ</span><p>这里只显示接口实际返回的数据。订阅额度、Key 预算和账号余额分别标注；未接入或查询失败时不会显示为 0。</p></div>
+      </section>
+      <section id="providers-view" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">PROVIDERS</p><h1>提供商配置<span class="accent">.</span></h1><p class="muted">一个账号配置一次，可关联多个模型。</p></div><button id="add-provider" class="primary">＋ 添加账号</button></div>
+        <div id="provider-list" class="provider-list"></div>
+        <div class="info-line"><span>ⓘ</span><p>此处的密钥仅用于余额查询。模型调用和路由规则仍使用路由服务配置。</p></div>
+      </section>
+      <section id="network-view" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">CONNECTION</p><h1>访问配置<span class="accent">.</span></h1><p class="muted">通过服务器 IP 或反向代理地址访问管理页面。</p></div></div>
+        <div class="network-layout"><form id="network-form" class="panel">
+          <h2>监听与访问地址</h2>
+          <label for="network-host">监听 IP</label><input id="network-host" required placeholder="0.0.0.0"><small>127.0.0.1 仅本机访问；0.0.0.0 监听所有 IPv4 网卡。</small>
+          <label for="network-port">管理端口</label><input id="network-port" type="number" min="1" max="65535" required>
+          <label for="network-url">对外访问地址（可选）</label><input id="network-url" type="url" placeholder="http://192.168.1.20:8319"><small>填写实际服务器 IP 和端口，或 HTTPS 反向代理地址。</small>
+          <button class="primary" type="submit">保存访问配置</button><p id="network-message" role="status" class="muted"></p>
+        </form><div class="panel connection-card"><p class="eyebrow">CURRENT CONNECTION</p><h2>当前连接</h2><p id="current-address" class="address"></p><button id="copy-address" class="secondary">复制当前地址</button><hr><p class="muted">保存后重启管理服务，新的监听 IP 和端口才会生效。对外访问还需服务器网络允许对应端口。</p><code>systemctl --user restart model-router-dashboard</code></div></div>
+      </section>
+      <footer>Model Router <span>余额属于账号，能力属于模型。</span></footer>
+    </main>
+  </div>
+  <dialog id="provider-dialog">
+    <form id="provider-form">
+      <div class="dialog-heading"><div><p class="eyebrow">PROVIDER ACCOUNT</p><h2 id="provider-title">添加账号</h2></div><button id="close-dialog" class="icon-button" type="button" aria-label="关闭">×</button></div>
+      <input id="provider-id" type="hidden">
+      <label for="provider-name">账号名称</label><input id="provider-name" required maxlength="80" placeholder="例如：我的 DeepSeek">
+      <label for="provider-kind">余额接口类型</label><select id="provider-kind"></select><p id="kind-note" class="field-note"></p>
+      <div id="key-fields"><label for="provider-key">查询密钥</label><input id="provider-key" type="password" autocomplete="new-password" placeholder="填写该提供商的余额查询 API Key"><small id="key-note">已保存的密钥不会显示，留空保持原值。</small><label class="check-label"><input id="clear-key" type="checkbox">清除已保存密钥</label></div>
+      <div id="custom-fields" hidden><label for="provider-endpoint">GET 余额接口地址</label><input id="provider-endpoint" type="url" placeholder="https://api.example.com/balance"><label for="provider-path">金额字段路径</label><input id="provider-path" placeholder="data.balance"><label for="provider-currency">单位</label><select id="provider-currency"><option value="CNY">CNY · 人民币</option><option value="USD">USD · 美元</option><option value="credits">credits · 点数</option></select></div>
+      <label for="provider-models">关联模型</label><textarea id="provider-models" rows="2" placeholder="用逗号分隔，例如 DeepSeek Flash, DeepSeek Pro"></textarea><small>用于展示共用此账号余额的模型，不修改模型调用配置。</small>
+      <p id="provider-error" class="error" role="alert"></p><button class="primary" type="submit">保存账号配置</button>
+    </form>
+  </dialog>
+</body>
+</html>

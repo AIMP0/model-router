@@ -1,0 +1,44 @@
+{
+  "config-version": 8,
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8317
+  },
+  "management": {
+    "allow-remote": false,
+    "secret-key": "",
+    "disable-control-panel": true,
+    "disable-auto-update-panel": true
+  },
+  "oauth": {
+    "auth-dir": "runtime/auths"
+  },
+  "api-keys": {
+    "openai-compatibility": [
+      {
+        "name": "aimp-deepseek-official",
+        "base-url": "https://api.deepseek.com",
+        "keys": [
+          {
+            "api-key": "REPLACE_WITH_DEEPSEEK_API_KEY"
+          }
+        ],
+        "models": [
+          {
+            "name": "deepseek-flash",
+            "alias": "aimp-deepseek-flash"
+          },
+          {
+            "name": "deepseek-v4-pro",
+            "alias": "aimp-deepseek-pro"
+          }
+        ]
+      }
+    ]
+  },
+  "access": {
+    "api-keys": [
+      "REPLACE_WITH_PRIVATE_LINK_KEY"
+    ]
+  }
+}

@@ -1,11 +1,12 @@
 [Unit]
 Description=AIMP model router and failover service
-After=network-online.target
+After=network-online.target cliproxyapi.service
+Wants=cliproxyapi.service
 
 [Service]
 Type=simple
-WorkingDirectory=%h/.local/share/aimp-model-router
-ExecStart=/usr/bin/python3 -m aimp_router.server --config %h/.local/share/aimp-model-router/runtime/config.json --token-file %h/.local/share/aimp-model-router/runtime/client-token --credentials-file %h/.local/share/aimp-model-router/runtime/credentials.json --port 8318
+WorkingDirectory=%h/.local/share/model-router
+ExecStart=/usr/bin/python3 -m aimp_router.server --config %h/.local/share/model-router/runtime/config.json --token-file %h/.local/share/model-router/runtime/client-token --credentials-file %h/.local/share/model-router/runtime/credentials.json --port 8318
 Restart=on-failure
 RestartSec=3
 UMask=0077
@@ -13,7 +14,7 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=%h/.local/share/aimp-model-router/runtime
+ReadWritePaths=%h/.local/share/model-router/runtime
 
 [Install]
 WantedBy=default.target

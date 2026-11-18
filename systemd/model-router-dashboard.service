@@ -1,0 +1,19 @@
+[Unit]
+Description=Model Router balances and account dashboard
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/share/model-router
+ExecStart=/usr/bin/python3 -m aimp_router.dashboard --runtime-dir %h/.local/share/model-router/runtime
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/share/model-router/runtime
+
+[Install]
+WantedBy=default.target
