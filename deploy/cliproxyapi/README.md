@@ -1,6 +1,6 @@
 # CLIProxyAPI 部署组件
 
-本目录来自原 `HaoGuoo/cliproxyapi-deploy`，现在与模型路由、余额管理页面统一维护。完整步骤见仓库根目录 [README](../../README.md)。
+本目录来自原 `AIMP0/cliproxyapi-deploy`，现在与模型路由、余额管理页面统一维护。完整步骤见仓库根目录 [README](../../README.md)。
 
 上游使用 [router-for-me/CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI) 的 **v8.0.73 Linux amd64** 发行版，固定 SHA256 校验；本目录不包含上游源码或二进制，不修改上游程序。
 
