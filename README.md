@@ -31,7 +31,7 @@
 完整代理部署需要 Linux x86_64、Python 3.10+、Git 和用户级 systemd。余额页面本身可在其他 Python 3.10+ 平台运行。
 
 ```sh
-git clone https://github.com/HaoGuoo/model-router.git ~/.local/share/model-router
+git clone https://github.com/AIMP0/model-router.git ~/.local/share/model-router
 cd ~/.local/share/model-router
 
 # 1. 安装代理；校验固定版本发行包 SHA256
@@ -112,7 +112,7 @@ setup_dashboard.py    IP、端口与管理令牌初始化
 test_*.py             本机模拟上游与管理接口测试
 ```
 
-`cliproxyapi-deploy` 已并入本仓库，后续统一在此维护。源快照：[`cliproxyapi-deploy@7aa74da`](https://github.com/HaoGuoo/cliproxyapi-deploy/tree/7aa74dafd61f91d1bca2d8fa12db2c858697e82d)。原仓库保留其历史并归档；本仓库保留 model-router 原有提交历史。
+`cliproxyapi-deploy` 已并入本仓库，后续统一在此维护。源快照：[`cliproxyapi-deploy@7aa74da`](https://github.com/AIMP0/cliproxyapi-deploy/tree/7aa74dafd61f91d1bca2d8fa12db2c858697e82d)。原仓库保留其历史并归档；本仓库保留 model-router 原有提交历史。
 
 本次仓库整合不迁移服务器、不复制旧凭据、不自动重启服务。已有部署不要直接重跑初始化脚本；迁移时先备份私有 runtime，调整服务目录和代理 `oauth.auth-dir` 的绝对路径，验证后再停用旧目录。路由初始化仍支持 `--link-key-file /旧目录/runtime/link-key`。
 
